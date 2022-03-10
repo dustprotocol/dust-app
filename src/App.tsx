@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {appState, graphql, hooks, ReefSigner,} from '@reef-defi/react-lib';
 import ContentRouter from './pages/ContentRouter';
 import Nav from './common/Nav';
 import NoExtension from "./pages/error/NoExtension"
 import NoAccount from "./pages/error/NoAccount"
 import {innitialNetwork} from './environment';
+import { useCheckEvmBind } from './hooks/useCheckEvmBind';
 
 const App = (): JSX.Element => {
   const [signers, provider, selectedNetwork, loading, error]=hooks.useInitReefState( 'Reef Wallet App', innitialNetwork);
   const currentSigner: ReefSigner|undefined = hooks.useObservableState(appState.selectedSigner$);
   const apollo = hooks.useObservableState(graphql.apolloClientInstance$);
-  hooks.useBindEvmAddressAlert(currentSigner, provider);
+  const [evmBound, setBindEvm] = useState(false);
+  useCheckEvmBind(currentSigner, setBindEvm);
+  // hooks.useBindEvmAddressAlert(currentSigner, provider);
 
   return (
     <>
@@ -19,7 +22,9 @@ const App = (): JSX.Element => {
         <div className="w-100 main-content">
           {!loading && !error && (
             <>
-              <Nav display={!loading && !error} />
+              <Nav
+                evmBound={evmBound}
+                display={!loading && !error} />
               <ContentRouter />
             </>
           )}

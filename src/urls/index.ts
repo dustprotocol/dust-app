@@ -7,3 +7,4 @@ export const REMOVE_LIQUIDITY_URL = '/remove-supply/:address1/:address2';
 export const TRANSFER_TOKEN = '/send';
 export const CREATE_ERC20_TOKEN_URL = '/create-token';
 export const BONDS_URL = '/bonds';
+export const BIND_URL = '/bind';

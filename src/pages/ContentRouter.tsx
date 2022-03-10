@@ -9,7 +9,7 @@ import {
   SETTINGS_URL,
   SWAP_URL,
   TRANSFER_TOKEN,
-  BONDS_URL,
+  BONDS_URL, BIND_URL,
 } from '../urls';
 import AddLiqudity from './pools/AddLiquidity';
 import Pools from './pools/Pools';
@@ -19,6 +19,7 @@ import Dashboard from './dashboard/Dashboard';
 import { Transfer } from './transfer/Transfer';
 import { Creator } from './creator/Creator';
 import { Bonds } from './bonds/Bonds';
+import { Bind } from './bind/Bind';
 
 const ContentRouter = (): JSX.Element => (
   <div className="content">
@@ -32,6 +33,7 @@ const ContentRouter = (): JSX.Element => (
       <Route exact path={TRANSFER_TOKEN} component={Transfer} />
       <Route exact path={CREATE_ERC20_TOKEN_URL} component={Creator} />
       <Route exact path={BONDS_URL} component={Bonds} />
+      <Route exact path={BIND_URL} component={Bind} />
       <Route path="/" render={() => (<Redirect to={DASHBOARD_URL} />)} />
     </Switch>
   </div>

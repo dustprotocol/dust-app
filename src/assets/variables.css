@@ -11,6 +11,7 @@
   --gradient-light: linear-gradient(to right, var(--primary-light), var(--secondary-light));
   --danger: #d93636;
   --success: #47cc8a;
+  --warning: #e5f598;
   --shadow: 0 3px 30px 0 rgba(0, 0, 0, 0.07);
   --border-color: #EAEDF3;
   --border-color-lighter: #eff2f6;
