@@ -3,7 +3,7 @@ import {
   Components, Network, ReefSigner, reefTokenWithAmount, utils as reefUtils,
 } from '@reef-defi/react-lib';
 import React, { useEffect, useState } from 'react';
-import { Contract, ContractFactory, utils } from 'ethers';
+import { Contract, ContractFactory, utils, Signer as EthersSigner} from 'ethers';
 import { Link } from 'react-router-dom';
 import { verifyContract } from '../../utils/contract';
 import { metadataReef20Deploy, contractsReef20Deploy, metadataArtifactReef20Deploy } from './reef20DeployTokenData';
@@ -65,7 +65,8 @@ const createToken = async ({
   const args = [tokenName, symbol.toUpperCase(), utils.parseEther(initialSupply).toString()];
   const deployAbi = metadataReef20Deploy.abi;
   const deployBytecode = `0x${metadataReef20Deploy.data.bytecode.object}`;
-  const reef20Contract = new ContractFactory(deployAbi, deployBytecode, signer?.signer);
+  const sgnr: unknown = signer?.signer;
+  const reef20Contract = new ContractFactory(deployAbi, deployBytecode, sgnr as EthersSigner);
   const txIdent = Math.random().toString(10);
   let contract: Contract|undefined;
   let verified = false;
