@@ -69,7 +69,10 @@
     "react-icons": "^4.2.0"
   },
   "resolutions": {
-    "url-parse": "^1.5.10"
+    "url-parse": "^1.5.10",
+    "@reef-defi/react-lib": "link:/Users/mac0/dev/reef/reef-react-lib",
+    "@reef-defi/evm-provider": "link:/Users/mac0/dev/reef/evm-provider.js",
+    "react": "link:/Users/mac0/dev/reef/reef-react-lib/node_modules/react"
   },
   "packageManager": "yarn@3.2.0"
 }
