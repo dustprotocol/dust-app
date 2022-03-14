@@ -6,7 +6,7 @@
     "@apollo/client": "^3.5.7",
     "@polkadot/extension-dapp": "^0.40.3",
     "@reef-defi/extension-dapp": "^0.41.2",
-    "@reef-defi/react-lib": "^1.0.33",
+    "@reef-defi/react-lib": "^1.0.35",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
@@ -69,7 +69,12 @@
     "react-icons": "^4.2.0"
   },
   "resolutions": {
-    "url-parse": "^1.5.10"
+    "url-parse": "^1.5.10",
+    "@reef-defi/react-lib": "link:/Users/mac0/dev/reef/reef-react-lib",
+    "@reef-defi/evm-provider": "link:/Users/mac0/dev/reef/evm-provider.js",
+    "react": "link:/Users/mac0/dev/reef/reef-react-lib/node_modules/react",
+    "@polkadot/rpc-provider": "6.4.2",
+    "@polkadot/types": "6.4.2"
   },
   "packageManager": "yarn@3.2.0"
 }
