@@ -1,20 +1,6 @@
-import {
-  appState,
-  Components,
-  hooks,
-  ReefSigner,
-  Token,
-  TokenWithAmount,
-  utils as reefUtils,
-} from '@reef-defi/react-lib';
-import React from 'react';
+import {appState, Components, hooks, ReefSigner, Token, TokenWithAmount,} from '@reef-defi/react-lib';
 import {Provider} from '@reef-defi/evm-provider';
-
-const {
-  isDataSet,
-  getData,
-  DataProgress,
-} = reefUtils;
+import {EvmEvents} from "../../components/EvmEvents";
 
 const {
   Loading, TransferComponent,
@@ -41,7 +27,10 @@ export const Transfer = (): JSX.Element => {
       {!signerTokenBalances &&<Loading.Loading />}
       { provider && signerTokenBalances && selectedSigner
       &&
-        <TransferComponent tokens={signerTokenBalances as Token[]} from={selectedSigner} provider={provider} accounts={accounts || []} currentAccount={selectedSigner}/>
+          <>
+            <TransferComponent tokens={signerTokenBalances as Token[]} from={selectedSigner} provider={provider} accounts={accounts || []} currentAccount={selectedSigner}/>
+            <div><EvmEvents></EvmEvents></div>
+          </>
       }
     </>
   );
