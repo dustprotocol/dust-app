@@ -5,11 +5,12 @@ import Nav from './common/Nav';
 import NoExtension from "./pages/error/NoExtension"
 import NoAccount from "./pages/error/NoAccount"
 import {innitialNetwork} from './environment';
+import {ApolloClient} from "@apollo/client";
 
 const App = (): JSX.Element => {
-  const [signers, provider, selectedNetwork, loading, error]=hooks.useInitReefState( 'Reef Wallet App', innitialNetwork );
+  const apollo: ApolloClient<any>|undefined = hooks.useObservableState(graphql.apolloClientInstance$);
+  const [signers, provider, selectedNetwork, loading, error] = hooks.useInitReefState( 'Reef Wallet App', innitialNetwork, undefined, apollo || true );
   const currentSigner: ReefSigner|undefined = hooks.useObservableState(appState.selectedSigner$);
-  const apollo = hooks.useObservableState(graphql.apolloClientInstance$);
   hooks.useBindEvmAddressAlert(currentSigner, provider);
 
   return (

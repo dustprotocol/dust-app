@@ -12,6 +12,12 @@
     ],
     "react/*": [
       "./node_modules/react/*"
+    ],
+    "@apollo": [
+      "./node_modules/@apollo"
+    ],
+    "@apollo/*": [
+      "./node_modules/@apollo/*"
     ]
   }
   }
