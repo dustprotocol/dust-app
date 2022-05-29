@@ -1,5 +1,5 @@
 import React from 'react';
-import { TokenNFT, utils } from '@reef-defi/react-lib';
+import { TokenNFT, utils } from '@dust-defi/react-lib';
 import './Nfts.css';
 
 import NFT from './NFT';

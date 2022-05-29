@@ -5,9 +5,9 @@ import {
   hooks,
   appState,
   Network,
-  ReefSigner,
+  DustSigner,
   TokenSelector,
-} from '@reef-defi/react-lib';
+} from '@dust-defi/react-lib';
 import { useHistory, useParams } from 'react-router-dom';
 import { useTokensFinder } from '../../hooks/useTokensFinder';
 import { notify } from '../../utils/utils';
@@ -23,7 +23,7 @@ const AddLiqudity = (): JSX.Element => {
   const { address1, address2 } = useParams<UrlParams>();
   const history = useHistory();
   const tokens = useContext(TokenContext);
-  const signer: ReefSigner | undefined = hooks.useObservableState(
+  const signer: DustSigner | undefined = hooks.useObservableState(
     appState.selectedSigner$,
   );
   const network: Network | undefined = hooks.useObservableState(

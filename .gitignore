@@ -27,6 +27,6 @@ yarn-error.log*
 /.idea/misc.xml
 /.idea/modules.xml
 /.idea/inspectionProfiles/Project_Default.xml
-/.idea/reef-app.iml
+/.idea/dust-app.iml
 /.idea/vcs.xml
 /.idea/workspace.xml

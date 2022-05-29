@@ -9,7 +9,7 @@ export default {
         },
         {
           internalType: 'address',
-          name: '_reef',
+          name: '_dust',
           type: 'address',
         },
         {
@@ -257,7 +257,7 @@ export default {
     },
     {
       inputs: [],
-      name: 'reef',
+      name: 'dust',
       outputs: [
         {
           internalType: 'contract IERC20',

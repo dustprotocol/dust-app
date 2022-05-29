@@ -1,6 +1,6 @@
 import {
   Components, Token, TokenNFT, utils,
-} from '@reef-defi/react-lib';
+} from '@dust-defi/react-lib';
 import React from 'react';
 import { formatDate } from '../../utils/utils';
 import './TokenActivityItem.css';

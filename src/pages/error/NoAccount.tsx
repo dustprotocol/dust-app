@@ -9,7 +9,7 @@ const NoAccount: React.FC<unknown> = ({ children }): JSX.Element => (
         <div className="header__main-content">
           <h1 className="header__title">Create Your Account</h1>
         </div>
-        <div className="header__sub-content">Use Reef Chain Extension to create your account and refresh the page.</div>
+        <div className="header__sub-content">Use Dust Chain Extension to create your account and refresh the page.</div>
       </div>
 
       <Bubbles />
@@ -18,16 +18,16 @@ const NoAccount: React.FC<unknown> = ({ children }): JSX.Element => (
     <main>
       <div className="images">
         <div className="images__image">
-          <img src="img/6.png" alt="Reef Extenstion screenshot" />
+          <img src="img/6.png" alt="Dust Extenstion screenshot" />
         </div>
         <div className="images__image">
-          <img src="img/7.png" alt="Reef Extenstion screenshot" />
+          <img src="img/7.png" alt="Dust Extenstion screenshot" />
         </div>
         <div className="images__image">
-          <img src="img/8.png" alt="Reef Extenstion screenshot" />
+          <img src="img/8.png" alt="Dust Extenstion screenshot" />
         </div>
         <div className="images__image">
-          <img src="img/9.png" alt="Reef Extenstion screenshot" />
+          <img src="img/9.png" alt="Dust Extenstion screenshot" />
         </div>
       </div>
     </main>

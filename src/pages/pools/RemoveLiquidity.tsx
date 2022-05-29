@@ -5,8 +5,8 @@ import {
   appState,
   hooks,
   Network,
-  ReefSigner,
-} from '@reef-defi/react-lib';
+  DustSigner,
+} from '@dust-defi/react-lib';
 import { Redirect, useHistory, useParams } from 'react-router-dom';
 import { POOLS_URL } from '../../urls';
 import { useTokensFinder } from '../../hooks/useTokensFinder';
@@ -28,7 +28,7 @@ const RemoveLiquidity = (): JSX.Element => {
   const network: Network | undefined = hooks.useObservableState(
     appState.currentNetwork$,
   );
-  const signer: ReefSigner | undefined = hooks.useObservableState(
+  const signer: DustSigner | undefined = hooks.useObservableState(
     appState.selectedSigner$,
   );
 

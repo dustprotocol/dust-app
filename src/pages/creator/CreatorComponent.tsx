@@ -1,12 +1,12 @@
 import {
   availableNetworks,
-  Components, Network, ReefSigner, reefTokenWithAmount, utils as reefUtils,
-} from '@reef-defi/react-lib';
+  Components, Network, DustSigner, dustTokenWithAmount, utils as dustUtils,
+} from '@dust-defi/react-lib';
 import React, { useEffect, useState } from 'react';
 import { Contract, ContractFactory, utils } from 'ethers';
 import { Link } from 'react-router-dom';
 import { verifyContract } from '../../utils/contract';
-import { metadataReef20Deploy, contractsReef20Deploy, metadataArtifactReef20Deploy } from './reef20DeployTokenData';
+import { metadataDust20Deploy, contractsDust20Deploy, metadataArtifactDust20Deploy } from './dust20DeployTokenData';
 
 const {
   Display, Card: CardModule, TokenAmountFieldMax, Modal, Loading, Input: InputModule,
@@ -26,46 +26,46 @@ const {
 const { LoadingButtonIconWithText } = Loading;
 const { Input, NumberInput, InputAmount } = InputModule;
 const { ConfirmLabel } = Label;
-const { calculateUsdAmount } = reefUtils;
+const { calculateUsdAmount } = dustUtils;
 const { Button } = ButtonModule;
 
 interface CreatorComponent {
-    signer: ReefSigner | undefined;
+    signer: DustSigner | undefined;
     network: Network;
-    onTxUpdate?: reefUtils.TxStatusHandler;
+    onTxUpdate?: dustUtils.TxStatusHandler;
 }
 
 async function verify(contract: Contract, args: string[], network: Network): Promise<boolean> {
-  const { compilationTarget } = metadataArtifactReef20Deploy.settings;
+  const { compilationTarget } = metadataArtifactDust20Deploy.settings;
   const compTargetFileName = Object.keys(compilationTarget)[0];
   const verified = await verifyContract(contract, {
-    source: JSON.stringify(contractsReef20Deploy),
+    source: JSON.stringify(contractsDust20Deploy),
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     contractName: compilationTarget[compTargetFileName],
-    target: metadataArtifactReef20Deploy.settings.evmVersion,
-    compilerVersion: `v${metadataArtifactReef20Deploy.compiler.version}`,
-    optimization: metadataArtifactReef20Deploy.settings.optimizer.enabled.toString(),
+    target: metadataArtifactDust20Deploy.settings.evmVersion,
+    compilerVersion: `v${metadataArtifactDust20Deploy.compiler.version}`,
+    optimization: metadataArtifactDust20Deploy.settings.optimizer.enabled.toString(),
     filename: compTargetFileName,
-    runs: metadataArtifactReef20Deploy.settings.optimizer.runs,
+    runs: metadataArtifactDust20Deploy.settings.optimizer.runs,
   },
   args,
-  network.reefscanUrl);
+  network.dustscanUrl);
   return verified;
 }
 
 const createToken = async ({
   signer, network, tokenName, symbol, initialSupply, onTxUpdate, setResultMessage, setVerifiedContract, setDeployedContract,
-}: {signer?: ReefSigner, setResultMessage: any, tokenName: string, symbol: string, initialSupply: string, network: Network, onTxUpdate?: reefUtils.TxStatusHandler, setVerifiedContract: any, setDeployedContract: any}): Promise<void> => {
+}: {signer?: DustSigner, setResultMessage: any, tokenName: string, symbol: string, initialSupply: string, network: Network, onTxUpdate?: dustUtils.TxStatusHandler, setVerifiedContract: any, setDeployedContract: any}): Promise<void> => {
   if (!signer) {
     console.log('signer not set ');
     return;
   }
   setResultMessage({ complete: false, title: 'Deploying token', message: 'Sending token contract to blockchain.' });
   const args = [tokenName, symbol.toUpperCase(), utils.parseEther(initialSupply).toString()];
-  const deployAbi = metadataReef20Deploy.abi;
-  const deployBytecode = `0x${metadataReef20Deploy.data.bytecode.object}`;
-  const reef20Contract = new ContractFactory(deployAbi, deployBytecode, signer?.signer);
+  const deployAbi = metadataDust20Deploy.abi;
+  const deployBytecode = `0x${metadataDust20Deploy.data.bytecode.object}`;
+  const dust20Contract = new ContractFactory(deployAbi, deployBytecode, signer?.signer);
   const txIdent = Math.random().toString(10);
   let contract: Contract|undefined;
   let verified = false;
@@ -75,12 +75,12 @@ const createToken = async ({
     });
   }
   try {
-    contract = await reef20Contract.deploy(...args);
+    contract = await dust20Contract.deploy(...args);
   } catch (err:any) {
     if (onTxUpdate) {
       onTxUpdate({
         txIdent,
-        error: { message: err.message, code: reefUtils.TX_STATUS_ERROR_CODE.ERROR_UNDEFINED },
+        error: { message: err.message, code: dustUtils.TX_STATUS_ERROR_CODE.ERROR_UNDEFINED },
         txTypeEvm: true,
         addresses: [signer.address],
       });
@@ -98,7 +98,7 @@ const createToken = async ({
       txHash: contract.hash,
       isInBlock: true,
       txTypeEvm: true,
-      url: `https://${network === availableNetworks.mainnet ? '' : `${network.name}.`}reefscan.com/extrinsic/${contract.hash}`,
+      url: `https://${network === availableNetworks.mainnet ? '' : `${network.name}.`}dustscan.com/extrinsic/${contract.hash}`,
       addresses: [signer.address],
     });
   }
@@ -253,7 +253,7 @@ export const CreatorComponent = ({
             <ModalFooter>
               <Button disabled={!resultMessage.complete} onClick={init}>Close</Button>
               {resultMessage.complete && (
-              <Link to={`/add-supply//${deployedContract?.address}`} className="btn btn-reef border-rad">
+              <Link to={`/add-supply//${deployedContract?.address}`} className="btn btn-dust border-rad">
                 <span>Create pool</span>
               </Link>
               )}

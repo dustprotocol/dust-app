@@ -1,13 +1,13 @@
 import React from 'react';
 import './Staking.css';
 import {
-  appState, hooks, Network, ReefSigner,
-} from '@reef-defi/react-lib';
+  appState, hooks, Network, DustSigner,
+} from '@dust-defi/react-lib';
 import { BondsComponent } from '../bonds/BondsComponent';
 import { bonds, IBond } from '../bonds/utils/bonds';
 
 export const Staking = (): JSX.Element => {
-  const selectedSigner: ReefSigner | undefined = hooks.useObservableState(appState.selectedSigner$);
+  const selectedSigner: DustSigner | undefined = hooks.useObservableState(appState.selectedSigner$);
   const network: Network | undefined = hooks.useObservableState(appState.currentNetwork$);
 
   return (

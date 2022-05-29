@@ -7,7 +7,7 @@ const NoExtension: React.FC<unknown> = ({ children }): JSX.Element => (
     <header className="header">
       <div className="header__content">
         <div className="header__main-content">
-          <img className="header__logo" src="./img/reef.svg" alt="Reef Logo" />
+          <img className="header__logo" src="./img/dust.svg" alt="Dust Logo" />
           <h1 className="header__title">Chain Extension</h1>
         </div>
         <div className="header__sub-content">
@@ -23,29 +23,29 @@ const NoExtension: React.FC<unknown> = ({ children }): JSX.Element => (
     <main>
       <div className="images">
         <div className="images__image">
-          <img src="img/1.png" alt="Reef Extenstion screenshot" />
+          <img src="img/1.png" alt="Dust Extenstion screenshot" />
         </div>
         <div className="images__image">
-          <img src="img/3.png" alt="Reef Extenstion screenshot" />
+          <img src="img/3.png" alt="Dust Extenstion screenshot" />
         </div>
         <div className="images__image">
-          <img src="img/4.png" alt="Reef Extenstion screenshot" />
+          <img src="img/4.png" alt="Dust Extenstion screenshot" />
         </div>
         <div className="images__image">
-          <img src="img/5.png" alt="Reef Extenstion screenshot" />
+          <img src="img/5.png" alt="Dust Extenstion screenshot" />
         </div>
       </div>
 
       <p className="text">
         This browser extension manages accounts and allows signing of
         transactions. Besides that it enables easy overview and transfers of
-        native REEF and other tokens. With swap you can access the Reefswap
+        native DUST and other tokens. With swap you can access the Dustswap
         pools and exchange tokens.
       </p>
 
       <div className="download">
         <a
-          href="https://chrome.google.com/webstore/detail/reefjs-extension/mjgkpalnahacmhkikiommfiomhjipgjn"
+          href="https://chrome.google.com/webstore/detail/dustjs-extension/mjgkpalnahacmhkikiommfiomhjipgjn"
           target="_blank"
           className="button"
           rel="noreferrer"
@@ -69,7 +69,7 @@ const NoExtension: React.FC<unknown> = ({ children }): JSX.Element => (
         </a>
 
         <a
-          href="https://addons.mozilla.org/en-US/firefox/addon/reef-js-extension/"
+          href="https://addons.mozilla.org/en-US/firefox/addon/dust-js-extension/"
           target="_blank"
           className="button"
           rel="noreferrer"
@@ -99,7 +99,7 @@ const NoExtension: React.FC<unknown> = ({ children }): JSX.Element => (
         The code is open-source and available on
         {' '}
         <a
-          href="https://github.com/reef-defi/browser-extension"
+          href="https://github.com/dustprotocol/browser-extension"
           target="_blank"
           rel="noreferrer"
         >

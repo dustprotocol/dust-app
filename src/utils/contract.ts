@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 import { Contract, utils } from 'ethers';
 import { gql } from '@apollo/client';
 import { firstValueFrom } from 'rxjs';
-import { graphql } from '@reef-defi/react-lib';
+import { graphql } from '@dust-defi/react-lib';
 
 const CONTRACT_VERIFICATION_URL = '/api/verificator/submit-verification';
 
@@ -21,7 +21,7 @@ export interface VerificationContractReq extends BaseContract {
     arguments: string;
 }
 
-export interface ReefContract extends BaseContract {
+export interface DustContract extends BaseContract {
     filename: string;
     contractName: string;
 }
@@ -92,7 +92,7 @@ const isContrIndexed = async (address: string): Promise<boolean> => new Promise(
   });
 });
 
-export const verifyContract = async (deployedContract: Contract, contract: ReefContract, arg: string[], url?: string): Promise<boolean> => {
+export const verifyContract = async (deployedContract: Contract, contract: DustContract, arg: string[], url?: string): Promise<boolean> => {
   if (!url) {
     return false;
   }

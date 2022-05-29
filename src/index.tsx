@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './assets/index.css';
-import '@reef-defi/react-lib/dist/index.css';
+import '@dust-defi/react-lib/dist/index.css';
 import {
   BrowserRouter as Router,
 } from 'react-router-dom';
-import { graphql } from '@reef-defi/react-lib';
+import { graphql } from '@dust-defi/react-lib';
 import { ApolloProvider, ApolloConsumer } from '@apollo/client';
 import reportWebVitals from './reportWebVitals';
 import App from './App';

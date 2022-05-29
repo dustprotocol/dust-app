@@ -1,5 +1,5 @@
 import React from 'react';
-import { Components } from '@reef-defi/react-lib';
+import { Components } from '@dust-defi/react-lib';
 import { useHistory, useParams } from 'react-router-dom';
 import { ADD_LIQUIDITY_URL, REMOVE_LIQUIDITY_URL, SPECIFIED_SWAP_URL } from '../../urls';
 import { getIconUrl } from '../../utils/utils';
@@ -36,7 +36,7 @@ const Pool = (): JSX.Element => {
   return (
     <PoolPage
       address={address}
-      reefscanFrontendUrl={innitialNetwork.reefscanFrontendUrl}
+      dustscanFrontendUrl={innitialNetwork.dustscanFrontendUrl}
       openTrade={openTrade}
       getIconUrl={getIconUrl}
       openAddLiquidity={openAddLiquidity}

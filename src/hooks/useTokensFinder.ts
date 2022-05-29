@@ -1,6 +1,6 @@
 import {
-  createEmptyTokenWithAmount, rpc, ReefSigner, reefTokenWithAmount, Token, TokenWithAmount,
-} from '@reef-defi/react-lib';
+  createEmptyTokenWithAmount, rpc, DustSigner, dustTokenWithAmount, Token, TokenWithAmount,
+} from '@dust-defi/react-lib';
 import { useEffect, useState } from 'react';
 
 type State = 'Init' | 'Loading' | 'Success';
@@ -8,7 +8,7 @@ type State = 'Init' | 'Loading' | 'Success';
 interface UseTokensFinder {
   address1?: string;
   address2?: string;
-  signer?: ReefSigner;
+  signer?: DustSigner;
   tokens?: Token[]
 }
 
@@ -17,7 +17,7 @@ type UseTokensFinderOutput = [TokenWithAmount, TokenWithAmount, State];
 interface FindToken {
   tokens: Token[];
   address?: string;
-  signer?: ReefSigner;
+  signer?: DustSigner;
   defaultAmountValue: TokenWithAmount;
 }
 
@@ -50,7 +50,7 @@ export const useTokensFinder = ({
   address1, address2, tokens, signer,
 }: UseTokensFinder): UseTokensFinderOutput => {
   const [state, setState] = useState<State>('Init');
-  const [token1, setToken1] = useState<TokenWithAmount>(reefTokenWithAmount());
+  const [token1, setToken1] = useState<TokenWithAmount>(dustTokenWithAmount());
   const [token2, setToken2] = useState<TokenWithAmount>(createEmptyTokenWithAmount());
 
   useEffect(() => {
@@ -64,7 +64,7 @@ export const useTokensFinder = ({
         signer,
         tokens,
         address: address1,
-        defaultAmountValue: reefTokenWithAmount(),
+        defaultAmountValue: dustTokenWithAmount(),
       })
         .then(setToken1)
         .catch((e) => console.error(`Token: ${address1} was not found`));

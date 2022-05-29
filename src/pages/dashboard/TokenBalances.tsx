@@ -1,5 +1,5 @@
 import React from 'react';
-import { Components, TokenWithAmount, utils } from '@reef-defi/react-lib';
+import { Components, TokenWithAmount, utils } from '@dust-defi/react-lib';
 import { TokenPill } from './TokenPill';
 
 const { isDataSet, DataProgress } = utils;

@@ -1,9 +1,9 @@
 
 up:
-	docker run --name reef-app -dp 80:80 reef-app
+	docker run --name dust-app -dp 80:80 dust-app
 
 rebuild:
-	docker build -t reef-app .
+	docker build -t dust-app .
 
 down:
-	docker stop reef-app && docker rm reef-app
+	docker stop dust-app && docker rm dust-app

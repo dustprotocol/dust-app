@@ -2,8 +2,8 @@ import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import { ApolloClient } from '@apollo/client';
 import {
-  ReefSigner, graphql, hooks, appState,
-} from '@reef-defi/react-lib';
+  DustSigner, graphql, hooks, appState,
+} from '@dust-defi/react-lib';
 import {
   ADD_LIQUIDITY_URL,
   CREATE_ERC20_TOKEN_URL,
@@ -27,7 +27,7 @@ import TokenContext from '../context/TokenContext';
 import Pool from './pools/Pool';
 
 const ContentRouter = (): JSX.Element => {
-  const currentSigner: ReefSigner|undefined = hooks.useObservableState(appState.selectedSigner$);
+  const currentSigner: DustSigner|undefined = hooks.useObservableState(appState.selectedSigner$);
   const apollo: ApolloClient<any>|undefined = hooks.useObservableState(graphql.apolloClientInstance$);
   // Its not appropriet to have token state in this component, but the problem was apollo client.
   // Once its decared properlly in App move TokenContext in the parent component (App.tsx)

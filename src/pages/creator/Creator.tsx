@@ -1,11 +1,11 @@
 import React from 'react';
 import {
-  appState, hooks, Network, ReefSigner,
-} from '@reef-defi/react-lib';
+  appState, hooks, Network, DustSigner,
+} from '@dust-defi/react-lib';
 import { CreatorComponent } from './CreatorComponent';
 
 export const Creator = (): JSX.Element => {
-  const selectedSigner: ReefSigner|undefined = hooks.useObservableState(appState.selectedSigner$);
+  const selectedSigner: DustSigner|undefined = hooks.useObservableState(appState.selectedSigner$);
   const network: Network|undefined = hooks.useObservableState(appState.currentNetwork$);
 
   /* const onCreatorTxUpdate = (txState: utils.TxStatusUpdate): void => {

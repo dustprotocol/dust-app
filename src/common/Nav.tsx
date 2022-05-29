@@ -1,11 +1,11 @@
 import React from 'react';
 import {
-  Components, appState, hooks, ReefSigner, Network, availableNetworks,
-} from '@reef-defi/react-lib';
+  Components, appState, hooks, DustSigner, Network, availableNetworks,
+} from '@dust-defi/react-lib';
 import './Nav.css';
 import { Link, useHistory, useLocation } from 'react-router-dom';
 import { saveSignerLocalPointer } from '../store/internalStore';
-import { ReefLogo } from './Icons';
+import { DustLogo } from './Icons';
 import {
   BONDS_URL,
   CREATE_ERC20_TOKEN_URL, DASHBOARD_URL, defaultSwapUrl, POOLS_URL, TRANSFER_TOKEN,
@@ -28,8 +28,8 @@ export interface Nav {
 const Nav = ({ display }: Nav): JSX.Element => {
   const history = useHistory();
   const { pathname } = useLocation();
-  const signer: ReefSigner|undefined = hooks.useObservableState(appState.selectedSigner$);
-  const accounts: ReefSigner[]|undefined = hooks.useObservableState(appState.signers$);
+  const signer: DustSigner|undefined = hooks.useObservableState(appState.selectedSigner$);
+  const accounts: DustSigner[]|undefined = hooks.useObservableState(appState.signers$);
   const network: Network|undefined = hooks.useObservableState(appState.currentNetwork$);
   const selectAccount = (index: number): void => {
     saveSignerLocalPointer(index);
@@ -57,7 +57,7 @@ const Nav = ({ display }: Nav): JSX.Element => {
         <div className="logo-w">
           <button type="button" className="logo-btn" onClick={() => { history.push('/'); }}>
             <div className="svg-w h-100 w-100">
-              <ReefLogo />
+              <DustLogo />
             </div>
           </button>
         </div>
@@ -73,7 +73,7 @@ const Nav = ({ display }: Nav): JSX.Element => {
               accounts={accounts}
               selectedSigner={signer}
               selectAccount={selectAccount}
-              reefscanUrl={network.reefscanUrl}
+              dustscanUrl={network.dustscanUrl}
               selectNetwork={appState.setCurrentNetwork}
               availableNetworks={appAvailableNetworks}
             />

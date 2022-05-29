@@ -1,7 +1,7 @@
 import React from 'react';
 
-export const ReefLogo = (): JSX.Element => (
-  <svg viewBox="0 0 145 73" className="reef-logo">
+export const DustLogo = (): JSX.Element => (
+  <svg viewBox="0 0 145 73" className="dust-logo">
     <defs>
       <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="logograd">
         <stop stopColor="#681CFF" offset="0%" />

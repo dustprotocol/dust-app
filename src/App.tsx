@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-  appState, defaultOptions, graphql, hooks, ReefSigner,
-} from '@reef-defi/react-lib';
+  appState, defaultOptions, graphql, hooks, DustSigner,
+} from '@dust-defi/react-lib';
 import { ApolloProvider, ApolloClient } from '@apollo/client';
 import { ToastContainer, toast } from 'react-toastify';
 import { useHistory } from 'react-router-dom';
@@ -15,14 +15,14 @@ import { notify } from './utils/utils';
 import 'react-toastify/dist/ReactToastify.css';
 
 const App = (): JSX.Element => {
-  const { provider, loading, error } = hooks.useInitReefState(
-    'Reef Wallet App',
+  const { provider, loading, error } = hooks.useInitDustState(
+    'Dust Wallet App',
     {
       network: innitialNetwork,
     },
   );
   const history = useHistory();
-  const currentSigner: ReefSigner|undefined = hooks.useObservableState(appState.selectedSigner$);
+  const currentSigner: DustSigner|undefined = hooks.useObservableState(appState.selectedSigner$);
   const apollo: ApolloClient<any>|undefined = hooks.useObservableState(graphql.apolloClientInstance$);
   hooks.useBindEvmAddressAlert(currentSigner, provider);
 

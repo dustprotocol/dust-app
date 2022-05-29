@@ -1,6 +1,6 @@
 import {
-  Components, Network, ReefSigner, rpc, utils,
-} from '@reef-defi/react-lib';
+  Components, Network, DustSigner, rpc, utils,
+} from '@dust-defi/react-lib';
 import React, { useEffect, useState } from 'react';
 import {
   BigNumber, Contract, Signer, ethers,
@@ -14,7 +14,7 @@ import {
   BN_THOUSAND, BN_ZERO, isBn, isFunction,
 } from '@polkadot/util';
 import { DeriveEraRewards, DeriveOwnSlashes, DeriveStakerPoints } from '@polkadot/api-derive/types';
-import { Provider } from '@reef-defi/evm-provider';
+import { Provider } from '@dust-defi/evm-provider';
 import { IBond } from './utils/bonds';
 import BondData from './utils/bond-contract';
 
@@ -40,7 +40,7 @@ export const Skeleton = (): JSX.Element => (
   </div>
 );
 
-export const getReefBondContract = (bond: IBond, signer: Signer): Contract => new Contract(bond.bondContractAddress, BondData.abi, signer);
+export const getDustBondContract = (bond: IBond, signer: Signer): Contract => new Contract(bond.bondContractAddress, BondData.abi, signer);
 
 const {
   Display,
@@ -180,13 +180,13 @@ async function checkIfBondStakingOpen(contract: Contract, bondTimes?: IBondTimes
   return '';
 }
 
-async function bondFunds(erc20Address: string, contract: Contract, signer: ReefSigner, amount: string, status: (status: { message: string }) => void): Promise<void> {
+async function bondFunds(erc20Address: string, contract: Contract, signer: DustSigner, amount: string, status: (status: { message: string }) => void): Promise<void> {
   const isNotValid = await checkIfBondStakingOpen(contract);
   if (isNotValid) return;
   status({ message: 'Approving contract' });
   const bondAmount = utils.transformAmount(18, amount);
   // const bondAmount = BigNumber.from(amount);
-  const erc20 = await rpc.getREEF20Contract(erc20Address, signer.signer);
+  const erc20 = await rpc.getDUST20Contract(erc20Address, signer.signer);
   const tx = await erc20?.contract.approve(contract.address, bondAmount);
   const receipt = await tx.wait();
   status({ message: 'Staking' });
@@ -269,7 +269,7 @@ const calcReturn = async (provider: Provider, validatorId: string): Promise< {re
 export const BondsComponent = ({
   account,
   bond,
-}: { account?: ReefSigner; bond: IBond;}): JSX.Element => {
+}: { account?: DustSigner; bond: IBond;}): JSX.Element => {
   const [contract, setContract] = useState<Contract | undefined>(undefined);
   const [bondAmount, setBondAmount] = useState('');
   const [bondAmountMax, setBondAmountMax] = useState(0);
@@ -373,7 +373,7 @@ export const BondsComponent = ({
   useEffect(() => {
     if (!account) { return; }
 
-    const updatedContract = getReefBondContract(bond!, account.signer);
+    const updatedContract = getDustBondContract(bond!, account.signer);
     setContract(updatedContract);
 
     const setVars = async (): Promise<void> => {
@@ -404,7 +404,7 @@ export const BondsComponent = ({
           <ComponentCenter>
             <div className="bond-card">
               <div className="bond-card__wrapper">
-                <img className="bond-card__token-image" src="/img/reef.png" alt="Reef" />
+                <img className="bond-card__token-image" src="/img/dust.png" alt="Dust" />
                 <div className="bond-card__title">{bond.bondName}</div>
                 <div className="bond-card__subtitle">{bond.bondDescription}</div>
                 <div className="bond-card__description">
@@ -433,7 +433,7 @@ export const BondsComponent = ({
                   <>
                     <div className="bond-card__info-item">
                       <div className="bond-card__info-label">Bond contract</div>
-                      <div className="bond-card__info-value"><a href={`https://reefscan.com/contract/${bond.bondContractAddress}`} target="_blank" rel="noreferrer">{utils.toAddressShortDisplay(bond.bondContractAddress)}</a></div>
+                      <div className="bond-card__info-value"><a href={`https://dustscan.com/contract/${bond.bondContractAddress}`} target="_blank" rel="noreferrer">{utils.toAddressShortDisplay(bond.bondContractAddress)}</a></div>
                     </div>
                   </>
                   {!bondTimes?.opportunity.ended && !stakingClosedText

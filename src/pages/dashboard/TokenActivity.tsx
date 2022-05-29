@@ -1,7 +1,7 @@
 import React from 'react';
 import {
   appState, createEmptyTokenWithAmount, hooks, Network, TokenTransfer,
-} from '@reef-defi/react-lib';
+} from '@dust-defi/react-lib';
 import { TokenActivityItem, TokenActivityType } from './TokenActivityItem';
 import './TokenActivity.css';
 

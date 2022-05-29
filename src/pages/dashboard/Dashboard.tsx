@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {
-  TokenWithAmount, utils as reefUtils, utils, appState, hooks, Token, ReefSigner,
-} from '@reef-defi/react-lib';
+  TokenWithAmount, utils as dustUtils, utils, appState, hooks, Token, DustSigner,
+} from '@dust-defi/react-lib';
 import { Balance } from './Balance';
 import { ActionButtons } from './ActionButtons';
 import './Dashboard.css';
@@ -14,14 +14,14 @@ import { bonds } from '../bonds/utils/bonds';
 
 const {
   DataProgress, isDataSet,
-} = reefUtils;
+} = dustUtils;
 
 const Dashboard = (): JSX.Element => {
   const signerTokenBalances: TokenWithAmount[]|undefined = hooks.useObservableState(appState.tokenPrices$);
   const signerNfts = hooks.useObservableState(appState.selectedSignerNFTs$);
-  const selectedSigner: ReefSigner|undefined = hooks.useObservableState(appState.selectedSigner$);
+  const selectedSigner: DustSigner|undefined = hooks.useObservableState(appState.selectedSigner$);
 
-  const totalBalance: reefUtils.DataWithProgress<number> = isDataSet(signerTokenBalances) && signerTokenBalances?.length ? (signerTokenBalances).reduce((state: reefUtils.DataWithProgress<number>, curr) => {
+  const totalBalance: dustUtils.DataWithProgress<number> = isDataSet(signerTokenBalances) && signerTokenBalances?.length ? (signerTokenBalances).reduce((state: dustUtils.DataWithProgress<number>, curr) => {
     if (Number.isNaN(curr.balance) || Number.isNaN(curr.price) || !isDataSet(curr.balance)) {
       return state;
     }

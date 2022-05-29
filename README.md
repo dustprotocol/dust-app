@@ -1,23 +1,23 @@
-# Reef-App
+# Dust-App
 
 
 ## Developer section
 
 When developing add `*` in .eslintignore. Do not forget to remove it before you create a new pull request!
 
-## Developing with @reef-defi/react-lib
+## Developing with @dust-defi/react-lib
 
 For developing the app and lib simultaneously you will need to do certain steps:
 
-1. Fork/Clone [@reef-defi/react-lib](git@github.com:reef-defi/reef-react-lib.git) besides reef-app project.
-2. In `package.json` replace `"@reef-defi/react-components": "v..."` with `"@reef-defi/react-lib": "link:./../reef-react-lib/"`
+1. Fork/Clone [@dust-defi/react-lib](git@github.com:dustprotocol/dust-react-lib.git) besides dust-app project.
+2. In `package.json` replace `"@dust-defi/react-components": "v..."` with `"@dust-defi/react-lib": "link:./../dust-react-lib/"`
 3. `yarn`
 4. `yarn start`
 
 # Steps before Deployment when developing with react-lib * 
 Do not forget to publish the lib before app deployment! 
-In `package.json` replace `@reef-defi/react-lib` local link with the latest published version!
-Install and test Reefapp
+In `package.json` replace `@dust-defi/react-lib` local link with the latest published version!
+Install and test Dustapp
 
 ### `yarn start`
 

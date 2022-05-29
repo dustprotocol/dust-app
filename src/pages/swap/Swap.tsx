@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
 
 import {
-  appState, Components, hooks, Network, ReefSigner, Token, TokenSelector,
-} from '@reef-defi/react-lib';
+  appState, Components, hooks, Network, DustSigner, Token, TokenSelector,
+} from '@dust-defi/react-lib';
 import { useHistory, useParams } from 'react-router-dom';
 import { useTokensFinder } from '../../hooks/useTokensFinder';
 import { addressReplacer, SPECIFIED_SWAP_URL, UrlAddressParams } from '../../urls';
@@ -15,7 +15,7 @@ const Swap = (): JSX.Element => {
   const history = useHistory();
   const tokens = useContext(TokenContext);
   const network: Network|undefined = hooks.useObservableState(appState.currentNetwork$);
-  const signer: ReefSigner|undefined = hooks.useObservableState(appState.selectedSigner$);
+  const signer: DustSigner|undefined = hooks.useObservableState(appState.selectedSigner$);
 
   const { address1, address2 } = useParams<UrlAddressParams>();
 

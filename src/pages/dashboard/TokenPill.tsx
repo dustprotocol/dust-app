@@ -1,14 +1,14 @@
 import {
-  Components, hooks as reefHooks, TokenWithAmount, utils as reefUtils,
+  Components, hooks as dustHooks, TokenWithAmount, utils as dustUtils,
   utils,
-} from '@reef-defi/react-lib';
+} from '@dust-defi/react-lib';
 import React from 'react';
 import { getIconUrl, toCurrencyFormat } from '../../utils/utils';
 import './TokenPill.css';
 
-const { DataProgress, isDataSet } = reefUtils;
+const { DataProgress, isDataSet } = dustUtils;
 
-const { showBalance } = reefUtils;
+const { showBalance } = dustUtils;
 const { Loading } = Components.Loading;
 
 interface TokenPill {

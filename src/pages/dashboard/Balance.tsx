@@ -1,5 +1,5 @@
 import React from 'react';
-import { Components, utils } from '@reef-defi/react-lib';
+import { Components, utils } from '@dust-defi/react-lib';
 import { toCurrencyFormat } from '../../utils/utils';
 
 const { isDataSet, DataProgress } = utils;
